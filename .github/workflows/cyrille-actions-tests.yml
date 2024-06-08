@@ -26,8 +26,9 @@ jobs:
     - name: Train model
       run: python ./src/models/train_model.py
         
-    #- name: Upload model artifact
-    #  uses: actions/upload-artifact@v3
-    #  with:
-    #    name: trained-model
-    #    path: path/to/trained/model/
+    - name: Upload model artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: trained-model
+        path: ./src/models/trained_model.joblib
+        retention-days: 2
