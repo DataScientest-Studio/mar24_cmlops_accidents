@@ -67,4 +67,7 @@ jobs:
     - name: test de l'API
       run: |
         cd ./src/api
+        echo "debug ls"
+        ls
+        echo "fin debug ls"
         pytest
