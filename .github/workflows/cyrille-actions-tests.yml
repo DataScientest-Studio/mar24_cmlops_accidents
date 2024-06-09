@@ -60,7 +60,7 @@ jobs:
       run: |
         python3 --version
         pip show uvicorn
-        cd ./src/models
+        cd ./src/api
         uvicorn api:api --host 0.0.0.0 --port 8000 &
         sleep 10
         
