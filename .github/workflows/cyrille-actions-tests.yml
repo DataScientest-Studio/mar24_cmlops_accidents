@@ -66,8 +66,8 @@ jobs:
         
     - name: test de l'API
       run: |
-        cd ./src/api
+        #cd ./src/api
         echo "debug ls"
         ls
         echo "fin debug ls"
-        pytest
+        pytest .\src\api\test_api_fonction.py

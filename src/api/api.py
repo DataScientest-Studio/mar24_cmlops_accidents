@@ -8,9 +8,9 @@ from pydantic import BaseModel
 
 
 g_rf_classifier = None
-#g_model_filename = './src/models/trained_model.joblib'
+g_model_filename = './src/models/trained_model.joblib'
 #g_model_filename = 'D:/Development/Python/mar24_cmlops_accidents/src/models/trained_model.joblib'
-g_model_filename = '../models/trained_model.joblib'
+#g_model_filename = '../models/trained_model.joblib'
 
 
 api = FastAPI()
