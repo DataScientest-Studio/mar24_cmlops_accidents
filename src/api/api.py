@@ -82,15 +82,7 @@ def predict(features: dict) -> int:
     }
     """
     global g_rf_classifier
-    global g_model_filename
-    
-    #debug pipeline 
-    print("*********************************************************************")
-    print(g_model_filename)
-    print(os.path.isfile(g_model_filename))
-    print(os.path.isdir(g_model_filename))
-    #fin debug pipeline
-    
+    global g_model_filename    
     input_df = pd.DataFrame([features])
     
     # Chargement du modèle

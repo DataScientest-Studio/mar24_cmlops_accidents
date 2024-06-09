@@ -62,11 +62,6 @@ jobs:
         sleep 10
         
     - name: test de l'API
-      run: |
-        echo "debug 2 ls"
-        ls ./src/models/ -al
-        echo 2
-        ls ./src/models/trained_model.joblib -al
-        echo "fin debug 2 ls"
-        #pytest ./src/api/test_api_serveur.py
+      run: |        
         pytest ./src/api/test_api_fonction.py
+        pytest ./src/api/test_api_serveur.py
