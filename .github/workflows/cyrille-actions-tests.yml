@@ -74,5 +74,5 @@ jobs:
         echo "debug 2 ls"
         ls ./src/models/
         echo "fin debug 2 ls"
-        pytest ./src/api/test_api_serveur.py
-        #pytest ./src/api/test_api_fonction.py
+        #pytest ./src/api/test_api_serveur.py
+        pytest ./src/api/test_api_fonction.py
