@@ -70,4 +70,4 @@ jobs:
         echo "debug ls"
         ls
         echo "fin debug ls"
-        pytest .\src\api\test_api_fonction.py
+        pytest ./src/api/test_api_fonction.py
