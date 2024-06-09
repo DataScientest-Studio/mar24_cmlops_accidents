@@ -58,9 +58,9 @@ jobs:
     # Étapes suivantes pour déployer/utiliser le modèle téléchargé
     - name: lancement du serveur API
       run: |
-        python3 --version
-        pip show uvicorn
-        cd ./src/api
+        #python3 --version
+        #pip show uvicorn
+        #cd ./src/api
         #uvicorn api:api --host 0.0.0.0 --port 8000 &
         uvicorn --app-dir=./src/api api:api --host 0.0.0.0 --port 8000 &
         sleep 10
@@ -74,4 +74,5 @@ jobs:
         echo "debug 2 ls"
         ls ./src/models/
         echo "fin debug 2 ls"
-        pytest ./src/api/test_api_fonction.py
+        pytest ./src/api/test_api_serveur.py
+        #pytest ./src/api/test_api_fonction.py
