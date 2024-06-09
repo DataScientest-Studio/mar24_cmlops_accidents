@@ -47,7 +47,7 @@ jobs:
     # Étapes suivantes pour déployer/utiliser le modèle téléchargé
     - name: lancement du serveur API
       run: |
-        cd models
+        cd ./src/models
         uvicorn api:api --host 0.0.0.0 --port 8000 &
         sleep 10
         
