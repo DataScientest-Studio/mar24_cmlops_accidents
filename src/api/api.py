@@ -5,6 +5,7 @@ from sklearn import ensemble
 import joblib
 import numpy as np
 from pydantic import BaseModel
+import os
 
 
 g_rf_classifier = None
@@ -82,6 +83,13 @@ def predict(features: dict) -> int:
     """
     global g_rf_classifier
     global g_model_filename
+    
+    #debug pipeline 
+    print("*********************************************************************")
+    print(g_model_filename)
+    print(os.path.isfile(g_model_filename))
+    print(os.path.isdir(g_model_filename))
+    #fin debug pipeline
     
     input_df = pd.DataFrame([features])
     
