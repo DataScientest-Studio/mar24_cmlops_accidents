@@ -27,7 +27,7 @@ jobs:
       run: python ./src/models/train_model.py
         
     - name: Upload model artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: trained-model
         path: ./src/models/trained_model.joblib
@@ -50,7 +50,7 @@ jobs:
         pip install -r requirements.txt    
     
     - name: Download model artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: trained-model
         path: ./src/models/trained_model.joblib
@@ -58,21 +58,15 @@ jobs:
     # Étapes suivantes pour déployer/utiliser le modèle téléchargé
     - name: lancement du serveur API
       run: |
-        #python3 --version
-        #pip show uvicorn
-        #cd ./src/api
-        #uvicorn api:api --host 0.0.0.0 --port 8000 &
         uvicorn --app-dir=./src/api api:api --host 0.0.0.0 --port 8000 &
         sleep 10
         
     - name: test de l'API
       run: |
-        #cd ./src/api
-        echo "debug ls"
-        ls
-        echo "fin debug ls"
         echo "debug 2 ls"
-        ls ./src/models/
+        ls ./src/models/ -al
+        echo 2
+        ls ./src/models/trained_model.joblib -al
         echo "fin debug 2 ls"
         #pytest ./src/api/test_api_serveur.py
         pytest ./src/api/test_api_fonction.py
