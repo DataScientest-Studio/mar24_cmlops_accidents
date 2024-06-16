@@ -94,7 +94,7 @@ jobs:
       with:
         registry: cyrilleq
         username: cyrilleq
-        password: ${{ secrets.DOCKER_ACCESS_TOKEN }}     
+        password: ${{ secrets.DOCKER_ACCESS_TOKEN }}   
       
     # Pousser l'image vers un registre Docker
     - name: Pousser l'image vers le registre Docker
