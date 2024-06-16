@@ -93,7 +93,7 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: ${{ secrets.DOCKER_REGISTRY_URL }}
-        username: ${{ secrets.DOCKER_USERNAME }}
+        username: cyrilleq
         password: ${{ secrets.DOCKER_ACCESS_TOKEN }}      
       
     # Pousser l'image vers un registre Docker
