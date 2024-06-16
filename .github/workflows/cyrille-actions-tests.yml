@@ -88,3 +88,11 @@ jobs:
       
     - name: DEBUG - Lister les images Docker
       run: docker image ls
+      
+    # Pousser l'image vers un registre Docker
+    - name: Pousser l'image vers le registre Docker
+      run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/mar24accd:tagname
+      env:
+        DOCKER_REGISTRY_URL: ${{ secrets.DOCKER_REGISTRY_URL }}
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
