@@ -1,5 +1,5 @@
-#FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-bullseye
-FROM python:3.12
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8
+#FROM python:3.12
 
 RUN pip install --upgrade pip
 COPY setup.py setup.py
