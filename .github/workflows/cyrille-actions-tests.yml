@@ -72,8 +72,15 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4
+
     - name: Configurer Docker
       uses: docker-practice/actions-setup-docker@master
+      
+    - name: Download model artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: trained-model
+        path: ./src/models/      
       
     - name: Construire l'image Docker
       run: docker build . -t mar24accd:latest
