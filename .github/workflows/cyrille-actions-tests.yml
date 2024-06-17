@@ -83,7 +83,7 @@ jobs:
         path: ./src/models/      
       
     - name: Construire l'image Docker
-      run: docker build . -t mar24accd:latest
+      run: docker build . -t cyrilleq/mar24accd:latest
       working-directory: ./
       
     - name: DEBUG - Lister les images Docker
