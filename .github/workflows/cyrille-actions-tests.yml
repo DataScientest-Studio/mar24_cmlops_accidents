@@ -68,8 +68,8 @@ jobs:
         
   build-docker-image:
     runs-on: ubuntu-latest
-    #needs: test-api
-    needs: train-model
+    needs: test-api
+    #needs: train-model
     
     steps:
     - uses: actions/checkout@v4
@@ -84,7 +84,7 @@ jobs:
         path: ./src/models/      
       
     - name: Construire l'image Docker
-      run: docker build . -t cyrilleq/mar24accd:latest
+      run: docker build . -t ${{secrets.DOCKER_USERNAME}}/mar24accd:latest
       working-directory: ./
       
     - name: DEBUG - Lister les images Docker
@@ -98,4 +98,4 @@ jobs:
       
     # Pousser l'image vers un registre Docker
     - name: Pousser l'image vers le registre Docker
-      run: docker push cyrilleq/mar24accd:latest
+      run: docker push ${{secrets.DOCKER_USERNAME}}/mar24accd:latest
