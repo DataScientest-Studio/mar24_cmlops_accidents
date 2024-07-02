@@ -2,6 +2,7 @@ import pytest
 import requests
 
 
+
 def test_status():
     url = "http://127.0.0.1:8000/status"    
     response = requests.get(url)
@@ -11,27 +12,6 @@ def test_status():
     else:
         print(f"Erreur : {response.status_code}")
         assert False
-
-
-def test_autorisation_ok():
-    #assert False
-    assert True
-
-    
-def test_autorisation_nok():
-    #assert False
-    assert True
-    
-
-def test_authentification_ok():
-    #assert False
-    assert True
-    
-
-def test_authentification_nok():
-    #assert False
-    assert True
-    
 
 
 def test_prediction():

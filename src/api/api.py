@@ -10,18 +10,13 @@ import os
 import json
 
 
-####  Chemin des fichiers #####
 g_rf_classifier = None
 g_model_filename = './src/models/trained_model.joblib'
-users_filename = './data/users.json'
-admins_filename = './data/admins.json'
-
 #g_model_filename = 'D:/Development/Python/mar24_cmlops_accidents/src/models/trained_model.joblib'
 #g_model_filename = '../models/trained_model.joblib'
 
 
 ####  Gestion des utilisateurs et des droits (admin) #####
-# TODO  Voir dans le cas ou le chemin n'existe pas, ou le json est vide ou au mauvais format
 
 security = HTTPBasic()
 
@@ -29,12 +24,16 @@ class User(BaseModel):
     name: str
     password: str
 
-# load users and admins_file
-with open(users_filename, "r") as f:
-    users = json.load(f)
-
-with open(admins_filename, "r") as f:
-    admins = json.load(f)
+# initialise users and admins
+users = {
+  "alice": "wonderland",
+  "bob": "builder",
+  "clementine": "mandarine",
+  "admin1": "admin1" 
+}
+admins = {
+  "admin1": "admin1" 
+}
 
 # Vérification user
 def verif_user(creds: HTTPBasicCredentials = Depends(security)):
@@ -150,7 +149,7 @@ def get_status():
     return {'status': 'ok'}
 
 
-@api.post('/prediction')
+@api.post('/prediction', tags = ['user'])
 def post_prediction(prediction: Prediction, Verification = Depends(verif_user)):
     """
     Exemple test avec curl
@@ -182,9 +181,8 @@ def create_user(new_user : User, Verifcation = Depends(verif_admin)):
 
     # Ajout du new_user dans users, renvoyer "succes"
     users.update({new_user.name : new_user.password})
-    with open(users_filename, 'w', encoding='utf8') as f:
-        json.dump(users,f)
-    return {"user créee avec succes" : new_user}
+    return {"user créé avec succès" : new_user}
+
 
 @api.post("/new_admin", tags = ['admin'])
 def create_admin(new_admin : User, Verifcation = Depends(verif_admin)):
@@ -211,15 +209,15 @@ def create_admin(new_admin : User, Verifcation = Depends(verif_admin)):
     users.update({new_admin.name : new_admin.password})
     admins.update({new_admin.name : new_admin.password})   
 
-    with open(admins_filename, 'w', encoding='utf8') as f:
-        json.dump(admins,f)
-
-    with open(users_filename, 'w', encoding='utf8') as f:
-        json.dump(users,f)
-
     return {"new admin créee avec succes" : new_admin}
 
+@api.get('test/users and admin list', tags = ['test'])
+def get_users_list():
+    return {'users': users , 'admins': admins}
 
+@api.get("/test/verify_user", dependencies=[Depends(verif_user)], tags = ['test'])
+def verify_user_authorisation():
+    return {"message": "User verified"}
 
 if __name__ == '__main__':
     #
