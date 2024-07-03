@@ -4,8 +4,8 @@ from fastapi.security import HTTPBasicCredentials
 
 # Problème:
 # Pourquoi "from api import" ne fonctionne pas ? alors que dans "test_api_fonction" cela marche.
-from api import verif_user, verif_admin
-#from src.api.api import verif_user, verif_admin
+#from api import verif_user, verif_admin
+from src.api.api import verif_user, verif_admin
 
 
 def test_verif_user_ok():
