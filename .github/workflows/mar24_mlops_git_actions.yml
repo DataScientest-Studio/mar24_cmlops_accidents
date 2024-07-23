@@ -47,7 +47,7 @@ jobs:
         args: --acl public-read --follow-symlinks --delete
       env:
         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-        SOURCE_DIR: ./src/models/trained_model.joblib
+        SOURCE_DIR: ./src/models/
 
   test-api:
     runs-on: ubuntu-latest
