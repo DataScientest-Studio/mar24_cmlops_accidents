@@ -26,6 +26,7 @@ def evaluate_model():
     predictions = loaded_model.predict(X_test)
  
     prediction_csv = pd.DataFrame({"target": y_test, "predicted": predictions})
+    #prediction_filename = f'src/models/predictions/prediction_{datetime.today().strftime("%Y%m%d%H%M%S")}.csv'
     prediction_filename = f'src/models/predictions/prediction_{datetime.today().strftime("%Y%m%d%H%M%S")}.csv'
     prediction_csv.to_csv(prediction_filename, index=False, header=True)
 
@@ -34,7 +35,8 @@ def evaluate_model():
     precision = metrics.precision_score(y_test, predictions)
     f1 = metrics.f1_score(y_test, predictions)
     
-    metrics_filename = f'src/models/scores/scores_{datetime.today().strftime("%Y%m%d%H%M%S")}.json'
+    #metrics_filename = f'src/models/scores/scores_{datetime.today().strftime("%Y%m%d%H%M%S")}.json'
+    metrics_filename = f'src/models/scores/scores.json'
     with open(metrics_filename, "w") as fd:
         json.dump({"mse": mse, "precision": precision, "recall": recall, "f1": f1}, fd, indent=2)
 
