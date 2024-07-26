@@ -4,8 +4,8 @@ import time
 import json
 
 # Lien vers les pages
-import pages.p1_user as p1_user
-import pages.p2_admin as p2_admin
+import p1_user
+import p2_admin
 
 # Peut être desactivée (commentaire) pour présentation "etroite"
 st.set_page_config(layout="wide")  
@@ -51,6 +51,6 @@ st.sidebar.write("""
                 BOINALI Nadjedine  
                 CALMETTES Ludovic  
                 **Mentor:**  
-                Maria               
+                Maria DOMENZAIN ACEVEDO            
                  """)
 
