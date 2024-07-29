@@ -6,7 +6,8 @@ import json
 # Definition des chemins, url et noms 
 api_url_heroku = "https://dst-mar-accident-ee3901cfb695.herokuapp.com"
 api_url_local = "http://localhost:8000"  # A verifier
-api_url = api_url_local
+api_url = api_url_heroku
+
 
 # features utilisées par default (predict = 0)
 features_0= {'place':1,
@@ -130,6 +131,7 @@ def app():
     with col1:
         predict_api(user_values) 
     col2.write("Pour tester un accident grave, changer: catu = 3 et catr = 1 (pieton sur autoroute !!)")
+    col2.write("apres modif du joblib c'est catu = 1 et catr = 1 (pas logique)")
 
     st.markdown("---")  
     if st.button("Test de la connexion"):
